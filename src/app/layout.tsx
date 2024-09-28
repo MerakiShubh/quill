@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,17 +32,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="light">
-      <body
-        className={cn(
-          "min-h-screen font-sans antialiased grainy",
-          geistSans.variable,
-          geistMono.variable,
-          inter.className
-        )}
-      >
-        <Navbar />
-        {children}
-      </body>
+      <Providers>
+        <body
+          className={cn(
+            "min-h-screen font-sans antialiased grainy",
+            geistSans.variable,
+            geistMono.variable,
+            inter.className
+          )}
+        >
+          <Navbar />
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }
